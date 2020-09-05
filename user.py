@@ -15,6 +15,10 @@ class User:
         User.users_list.append(self)
     
     def generate_user():
+        
+        '''
+        Pick user input when creating an account and store the user 's details
+        '''
         user = User(input("Enter your first name"), input("Enter your last name"), input("Enter your prefered username"), input("Enter your password"))
         
         return user

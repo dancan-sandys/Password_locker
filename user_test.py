@@ -45,8 +45,16 @@ class Test_user(unittest.TestCase):
         
         
         second_user = User.generate_user()
+        second_user.save_user()
         self.assertEqual(second_user.first_name, "Dancan")
-        # self.assertEqual(len(User.users_list),2)
+        self.assertEqual(len(User.users_list),2)
+    
+    def test_find_user_by_username(self):
+        
+        login = input("Enter your username")
+        self.assertEqual(find_account_by_username(),login)
+   
+        
         
         
 if __name__ == "__main__":
