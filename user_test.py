@@ -46,6 +46,7 @@ class Test_user(unittest.TestCase):
         
         second_user = User.generate_user()
         self.assertEqual(second_user.first_name, "Dancan")
+        # self.assertEqual(len(User.users_list),2)
         
         
 if __name__ == "__main__":

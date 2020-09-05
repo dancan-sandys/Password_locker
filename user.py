@@ -14,3 +14,8 @@ class User:
     def save_user(self):
         User.users_list.append(self)
     
+    def generate_user():
+        user = User(input("Enter your first name"), input("Enter your last name"), input("Enter your prefered username"), input("Enter your password"))
+        
+        return user
+        
