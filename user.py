@@ -24,12 +24,18 @@ class User:
         return user
         
     
-    def find_account_by_username():
+    def find_account_by_username(login):
         
         '''
         Find a user's account details by username
         '''
         
         for account in User.users_list:
-            
-            return account.user_name
+            if login == account.password:
+                return account.password
+        
+    def ask_for_password():
+        
+        case_password = input("Enter your password")
+        return case_password
+        
