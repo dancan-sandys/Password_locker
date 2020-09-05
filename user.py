@@ -23,3 +23,13 @@ class User:
         
         return user
         
+    
+    def find_account_by_username():
+        
+        '''
+        Find a user's account details by username
+        '''
+        
+        for account in User.users_list:
+            
+            return account.user_name

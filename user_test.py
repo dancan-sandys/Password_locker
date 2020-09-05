@@ -36,7 +36,7 @@ class Test_user(unittest.TestCase):
         '''
         
         self.new_user.save_user()
-        self.assertEqual(len(User.users_list),1)
+        self.assertEqual(len(User.users_list),2)
     
     def test_take_new_user_input_details(self):
         '''
@@ -47,12 +47,14 @@ class Test_user(unittest.TestCase):
         second_user = User.generate_user()
         second_user.save_user()
         self.assertEqual(second_user.first_name, "Dancan")
-        self.assertEqual(len(User.users_list),2)
+        self.assertEqual(len(User.users_list),3)
     
     def test_find_user_by_username(self):
         
+        self.new_user.save_user()
         login = input("Enter your username")
-        self.assertEqual(find_account_by_username(),login)
+        account_username = User.find_account_by_username()
+        self.assertEqual(account_username,login)
    
         
         
