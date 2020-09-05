@@ -3,19 +3,19 @@ class Credentials:
     A class to store and generate credentials for the user's accounts
     '''
     
-    # Credentials_list = []
-    # '''
-    # A list to store the credentials
-    # '''
+    Credentials_list = []
+    '''
+    A list to store the credentials
+    '''
     
-    # def __init__(self, site, password):
+    def __init__(self, site, password):
         
-    #     '''
-    #     initialize the Credentials class
-    #     '''
+        '''
+        initialize the Credentials class
+        '''
             
-    #     self.site_name = site
-    #     self.site_password = password
+        self.site_name = site
+        self.site_password = password
     
     def add_credentials():
         
