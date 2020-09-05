@@ -23,15 +23,16 @@ class User:
         
         return user
         
-    
-    def find_account_by_username(login):
+    @classmethod
+    def find_account_by_username(cls,login):
         
         '''
         Find a user's account details by username
         '''
-        
+        print(login)
         for account in User.users_list:
             if login == account.password:
+                print(account.password)
                 return account.password
         
     def ask_for_password():
@@ -39,3 +40,5 @@ class User:
         case_password = input("Enter your password")
         return case_password
         
+        
+    
