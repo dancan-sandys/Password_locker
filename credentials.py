@@ -17,14 +17,14 @@ class Credentials:
         self.site_name = site
         self.site_password = password
     
-    def add_credentials():
+    # def add_credentials():
         
-        '''
-        a function to add the credentials
-        '''
+    #     '''
+    #     a function to add the credentials
+    #     '''
         
-        new_credentials = Credentials(input('Enter the site you would like to secure'), input('Enter the site password'))
-        return new_credentials
+    #     new_credentials = Credentials(input('Enter the site you would like to secure'), input('Enter the site password'))
+    #     return new_credentials
     
     
     def save_credentials():
