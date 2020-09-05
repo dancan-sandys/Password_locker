@@ -27,13 +27,13 @@ class Credentials:
         return new_credentials
     
     
-    # def save_credentials(self):
+    def save_credentials(self):
         
-    #     '''
-    #     a function to save the credentials
-    #     '''
+        '''
+        a function to save the credentials
+        '''
         
-    #     Credentials.Credentials_list.append(self)
+        Credentials.Credentials_list.append(self)
     
     @classmethod
     def find_credentials(cls):
