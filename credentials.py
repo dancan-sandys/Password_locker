@@ -27,14 +27,13 @@ class Credentials:
         return new_credentials
     
     
-    def save_credentials():
+    # def save_credentials(self):
         
-        '''
-        a function to save the credentials
-        '''
-        new_credentials = Credentials.add_credentials()
+    #     '''
+    #     a function to save the credentials
+    #     '''
         
-        Credentials.Credentials_list.append(new_credentials)
+    #     Credentials.Credentials_list.append(self)
     
     @classmethod
     def find_credentials(cls):
@@ -51,7 +50,7 @@ class Credentials:
                 print('The site you entered does not exist in our data base. You can add it below.')
                 
                 
-Credentials.save_credentials()
+# Credentials.save_credentials()
 Credentials.find_credentials()
     
     
