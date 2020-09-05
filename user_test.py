@@ -37,6 +37,15 @@ class Test_user(unittest.TestCase):
         
         self.new_user.save_user()
         self.assertEqual(len(User.users_list),1)
+    
+    def test_take_new_user_input_details(self):
+        '''
+        test if user input on his/her account credentials can be tacken
+        '''
+        
+        
+        second_user = User.generate_user()
+        self.assertEqual(second_user.first_name, "Dancan")
         
         
 if __name__ == "__main__":
