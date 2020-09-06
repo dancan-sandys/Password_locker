@@ -8,6 +8,8 @@ class Credentials:
     A list to store the credentials
     '''
     
+    search_credential = None
+        
     def __init__(self, site, password):
         
         '''
@@ -43,6 +45,7 @@ class Credentials:
         for site in Credentials.Credentials_list:
             if site.site_name == search_credential:
                 print(f'Your {site.site_name} password is {site.site_password}')
+                search_credential = site.site_password
                 return site.site_password
             
             
