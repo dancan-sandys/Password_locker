@@ -56,7 +56,7 @@ def loging_in():
     
 
 def account_management():
-    
+    global login_status
     '''
     responsible for creating accounts and loging in
     '''
@@ -84,8 +84,11 @@ def account_management():
     if login_status == True:
     
         while login_status == True:
-            second_response = int(input('''Choose an option from the following : 1 to search site passwords by sitename, 2 to display all site and their passords
-                                    3 to add a new site and its password, 4 to log out of your account'''))
+            second_response = int(input('''Choose an option from the following : 
+                                        1 => to search site passwords by sitename, 
+                                        2 => to display all site and their passords
+                                        3 => to add a new site and its password, 
+                                        4 => to log out of your account'''))
             
             if second_response == 1:
                 Credentials.find_credentials()        
@@ -98,7 +101,12 @@ def account_management():
                     
             elif second_response == 3:
                 new_credentials = Credentials.add_credentials()
-                new_credentials.save_credentials()       
+                new_credentials.save_credentials()
+                print(f"You have successfully added your new site credentials credentials ")   
+                
+            elif second_response == 4:
+                print("Thank you and see you later!")
+                login_status = False    
 
 
 
