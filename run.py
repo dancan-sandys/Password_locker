@@ -6,37 +6,43 @@ login_status = False
 the login status of any account which will change when user successfully logs in
 '''
 
-first_response = int(input("Hello, Respond with  1 to create an account and 2 to login into an existing account"))    
+authentic_username = False
+'''
+global variable to check if the user's enteredepassword is authentic
+'''
 
 
 
-def creating_an_account():   
+
+def creating_an_account():
+    
+    global authentic_username
+       
     new_user = User.generate_user()
     '''
-    Creating the user account
+    A function for creating the user account
     '''
-    
-    
     
     new_user_username = new_user.user_name
     
     
-    
-    print(f"Hang on {new_user_username} as we check if your details have been used in our databasse before")
     existing_account = User.find_account_by_username(new_user_username)
     '''
     checking if username already exists
     '''
+    
     try:
         if existing_account.user_name == new_user_username:
-            print("The account details you entered are already in use, please log in or try using another username")
+                print("The account details you entered are already in use, please use another username")
     except:
         print("Your account has successfully been created")
-    
-    new_user.save_user()
-    '''
-    saving the user's account
-    '''
+        
+        authentic_username = True
+        
+        new_user.save_user()
+        '''
+        saving the user's account
+        '''
  
 def loging_in():    
     global login_status
@@ -60,25 +66,35 @@ def account_management():
     '''
     responsible for creating accounts and loging in
     '''
-    if first_response == 1:
+    
+    while login_status == False:
+        first_response = int(input('''Hello, Respond with:  
+                                1 to create an account. 
+                                2 to login into an existing account.
+                                    '''))    
+        '''global variable to store the first response of the user on whether he/she wants to create an account or log 
+        into an existing one
+        '''
+    
+        if first_response == 1:
+                
+            '''
+            function to run when the user does not have an account with us
+            '''
+            while authentic_username == False:    
+                creating_an_account()  
             
-        '''
-        function to run when the user does not have an account with us
-        '''
-        
-        creating_an_account()  
-        
-        '''
-        first user's response to determine wehter or not he/she has an account
-        '''  
+            '''
+            first user's response to determine wehter or not he/she has an account
+            '''  
 
 
-    elif(first_response == 2):
-        
-        '''
-        function to login if the user already has an account
-        '''
-        loging_in()
+        elif(first_response == 2):
+            
+            '''
+            function to login if the user already has an account
+            '''
+            loging_in()
 
     
     if login_status == True:
@@ -88,7 +104,8 @@ def account_management():
                                         1 => to search site passwords by sitename, 
                                         2 => to display all site and their passords
                                         3 => to add a new site and its password, 
-                                        4 => to log out of your account'''))
+                                        4 => to log out of your account
+                                        '''))
             
             if second_response == 1:
                 Credentials.find_credentials()        
