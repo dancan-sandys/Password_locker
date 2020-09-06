@@ -78,7 +78,33 @@ def account_management():
         '''
         function to login if the user already has an account
         '''
-        loging_in()    
+        loging_in()
+
+    
+    if login_status == True:
+    
+        while login_status == True:
+            second_response = int(input('''Choose an option from the following : 1 to search site passwords by sitename, 2 to display all site and their passords
+                                    3 to add a new site and its password, 4 to log out of your account'''))
+            
+            if second_response == 1:
+                Credentials.find_credentials()        
+            
+            elif second_response == 2:
+                credential_list = Credentials.display_credentials()
+                
+                for credential in credential_list:
+                    print(credential)     
+                    
+            elif second_response == 3:
+                new_credentials = Credentials.add_credentials()
+                new_credentials.save_credentials()       
+
+
+
+
+
+    
         
         
 account_management()
