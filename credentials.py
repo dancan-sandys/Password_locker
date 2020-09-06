@@ -46,14 +46,15 @@ class Credentials:
             if site.site_name == search_credential:
                 print(f'Your {site.site_name} password is {site.site_password}')
                 search_credential = site.site_password
-                return site.site_password
+                
+                return site
             
             
             else:
                 print('The site you entered does not exist in our data base. You can add it below.')
                 
-                
-# Credentials.save_credentials()
-Credentials.find_credentials()
-    
-    
+# I = Credentials.add_credentials()                
+# I.save_credentials()
+# U = Credentials.find_credentials()
+# print(U.site_password)    
+  

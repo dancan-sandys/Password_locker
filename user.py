@@ -10,7 +10,10 @@ class User:
         self.last_name = lname
         self.user_name = usname
         self.password = psword
-        
+    
+   
+    
+            
     def save_user(self):
         User.users_list.append(self)
     
@@ -31,9 +34,11 @@ class User:
         '''
         print(login)
         for account in User.users_list:
-            if login == account.password:
-                print(account.password)
-                return account.password
+            if login == account.user_name :
+                print("Acount exists")
+                return account
+            
+                
         
     def ask_for_password():
         
@@ -41,4 +46,5 @@ class User:
         return case_password
         
         
-    
+new_user = User("Dancan","Oruko", "Sandys", "Stanford1*")
+new_user.save_user()
