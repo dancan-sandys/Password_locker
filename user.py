@@ -15,6 +15,10 @@ class User:
     
             
     def save_user(self):
+        '''
+        A function to save the user
+        '''
+        
         User.users_list.append(self)
     
     def generate_user():
@@ -22,7 +26,7 @@ class User:
         '''
         Pick user input when creating an account and store the user 's details
         '''
-        user = User(input("Enter your first name"), input("Enter your last name"), input("Enter your prefered username"), input("Enter your password"))
+        user = User(input("Enter your first name: "), input("Enter your last name: "), input("Enter your prefered username: "), input("Enter your password: "))
         
         return user
         
@@ -42,7 +46,7 @@ class User:
         
     def ask_for_password():
         
-        case_password = input("Enter your password")
+        case_password = input("Enter your password: ")
         return case_password
         
         

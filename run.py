@@ -63,16 +63,19 @@ def loging_in():
 
 def account_management():
     global login_status
-    '''
-    responsible for creating accounts and loging in
-    '''
+ 
     
     while login_status == False:
+        '''
+        facilitating account creation and log in
+        '''
+        
         first_response = int(input('''Hello, Respond with:  
                                 1 to create an account. 
                                 2 to login into an existing account.
-                                    '''))    
-        '''global variable to store the first response of the user on whether he/she wants to create an account or log 
+                                                '''))    
+        '''
+        global variable to store the first response of the user on whether he/she wants to create an account or log 
         into an existing one
         '''
     
@@ -83,16 +86,15 @@ def account_management():
             '''
             while authentic_username == False:    
                 creating_an_account()  
-            
             '''
-            first user's response to determine wehter or not he/she has an account
-            '''  
+            loop as long as the username of the account created is not authentic i.e has been used before
+            '''
 
 
         elif(first_response == 2):
             
             '''
-            function to login if the user already has an account
+            Function to login if the user already has an account
             '''
             loging_in()
 
@@ -101,26 +103,28 @@ def account_management():
     
         while login_status == True:
             second_response = int(input('''Choose an option from the following : 
-                                        1 => to search site passwords by sitename, 
-                                        2 => to display all site and their passords
-                                        3 => to add a new site and its password, 
+                                        1 => to add a new site and its password, 
+                                        2 => to search site passwords by sitename, 
+                                        3 => to display all sites and their passords
                                         4 => to log out of your account
-                                        '''))
+                                                      '''))
+            
             
             if second_response == 1:
-                Credentials.find_credentials()        
-            
-            elif second_response == 2:
-                credential_list = Credentials.display_credentials()
-                
-                for credential in credential_list:
-                    print(credential)     
-                    
-            elif second_response == 3:
                 new_credentials = Credentials.add_credentials()
                 new_credentials.save_credentials()
                 print(f"You have successfully added your new site credentials credentials ")   
                 
+            
+            elif second_response == 2:
+                Credentials.find_credentials()        
+            
+            elif second_response == 3:
+                credential_list = Credentials.display_credentials()
+                
+                for credential in credential_list:
+                    print(f"{credential.site_name} Account Password = {credential.site_password}")     
+                    
             elif second_response == 4:
                 print("Thank you and see you later!")
                 login_status = False    
@@ -130,9 +134,10 @@ def account_management():
 
 
     
+  if __name__ == "__main__":
+    account_management()     
         
-        
-account_management()
+
     
     
     

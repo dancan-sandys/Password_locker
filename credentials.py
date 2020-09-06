@@ -25,7 +25,7 @@ class Credentials:
         a function to add the credentials
         '''
         
-        new_credentials = Credentials(input('Enter the site you would like to secure'), input('Enter the site password'))
+        new_credentials = Credentials(input('Enter the site you would like to secure:  '), input('Enter the site password:  '))
         return new_credentials
     
     
@@ -38,12 +38,26 @@ class Credentials:
         Credentials.Credentials_list.append(self)
         
     def display_credentials():
+        '''
+        A function to display the credentials
+        '''
+        
         return Credentials.Credentials_list
     
+    def delete_account(self):
+        '''
+        A function to delete a site the user no longer wants in the database
+        '''
+        Credentials.Credentials_list.remove(self)
+        
+        
     @classmethod
     def find_credentials(cls):
+        '''
+        A function to find credentials by site name
+        '''
         
-        search_credential = input('Enter the site whose passoword you would like to search')
+        search_credential = input('Enter the site whose passoword you would like to search: ')
         
         for site in Credentials.Credentials_list:
             try:
@@ -60,8 +74,3 @@ class Credentials:
             except:
                 print('The site you entered does not exist in our data base. You can add it below.')
                 
-# I = Credentials.add_credentials()                
-# I.save_credentials()
-# U = Credentials.find_credentials()
-# # print(U.site_password)    
-  
