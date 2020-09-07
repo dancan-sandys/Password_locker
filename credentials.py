@@ -59,7 +59,7 @@ class Credentials:
         random_index = random.randint(0,len(random_passwords) - 1)
         random_password = random_passwords[random_index]
         new_credentials = Credentials(input('Enter the site you would like to secure:  '), random_password)
-        print(f"Your random password is {random_password}")
+        print(f"Your random password is:   {random_password}")
         return new_credentials
             
     @classmethod
