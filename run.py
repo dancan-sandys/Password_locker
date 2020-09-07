@@ -103,10 +103,11 @@ def account_management():
     
         while login_status == True:
             second_response = int(input('''Choose an option from the following : 
-                                        1 => to add a new site and its password, 
-                                        2 => to search site passwords by sitename, 
-                                        3 => to display all sites and their passords
-                                        4 => to log out of your account
+                                        1 => to add a new site and its password.
+                                        2 => to search site passwords by sitename.
+                                        3 => to display all sites and their passords.
+                                        4 => to delete a site you no longer use.
+                                        5 => to log out of your account.
                                                       '''))
             
             
@@ -124,11 +125,18 @@ def account_management():
                 
                 for credential in credential_list:
                     print(f"{credential.site_name} Account Password = {credential.site_password}")     
-                    
+            
             elif second_response == 4:
+                site_deleting = input("Enter the site name of the site you want to delete")
+                site_to_be_deleted = site_deleting.find_credentials
+                site_to_be_deleted.delete_account()
+                print("Site success fully deleted")
+                        
+            elif second_response == 5:
                 print("Thank you and see you later!")
                 login_status = False    
-
+            
+                
 
 
 
