@@ -1,3 +1,5 @@
+import random
+
 class Credentials:
     '''
     A class to store and generate credentials for the user's accounts
@@ -50,7 +52,16 @@ class Credentials:
         '''
         Credentials.Credentials_list.remove(self)
         
+    
+    def generate_random_password():
         
+        random_passwords = ['Lorem', 'ipsum', 'dolor', 'sitamet', 'consectetur', 'adipiscing', 'elitInteger', 'interdum', 'nonfelis', 'ateuismod', 'Nullaornare', 'viverra', 'justo']
+        random_index = random.randint(0,len(random_passwords) - 1)
+        random_password = random_passwords[random_index]
+        new_credentials = Credentials(input('Enter the site you would like to secure:  '), random_password)
+        print(f"Your random password is {random_password}")
+        return new_credentials
+            
     @classmethod
     def find_credentials(cls):
         '''

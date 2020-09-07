@@ -11,6 +11,10 @@ authentic_username = False
 global variable to check if the user's enteredepassword is authentic
 '''
 
+satisfactory_password = False
+'''
+global variable to store the satisfaction of the user with the generated password
+'''
 
 
 
@@ -58,11 +62,13 @@ def loging_in():
         login_status = True
     
     else:
-        print("You have entered a wrong. Please try again")
+        print("You have entered a wrong password or username. Please try again")
     
 
 def account_management():
     global login_status
+    
+    global satisfactory_password
  
     
     while login_status == False:
@@ -103,46 +109,72 @@ def account_management():
     
         while login_status == True:
             second_response = int(input('''Choose an option from the following : 
-                                        1 => to add a new site and its password.
-                                        2 => to search site passwords by sitename.
-                                        3 => to display all sites and their passords.
-                                        4 => to delete a site you no longer use.
-                                        5 => to log out of your account.
+                                        1 => to add a new site and input your own passowrd.
+                                        2 => to add a new site but let the app generate the password for you.
+                                        3 => to search site passwords by sitename.
+                                        4 => to display all sites and their passords.
+                                        5 => to delete a site you no longer use.
+                                        6 => to log out of your account.
                                                       '''))
             
             
             if second_response == 1:
                 new_credentials = Credentials.add_credentials()
                 new_credentials.save_credentials()
-                print(f"You have successfully added your new site credentials credentials ")   
-                
+                print(f"You have successfully added your new site credentials ")   
             
             elif second_response == 2:
-                Credentials.find_credentials()        
+                '''
+                to generate a user's passord automaticaly
+                '''
+                
+                while satisfactory_password == False:
+                    new_credentials = Credentials.generate_random_password()
+                    password_generation_response = int(input('''Respond with:
+                        1 => If you are Ok with the password
+                        2 => If you are not Ok with the password and would like another one to be generated for you
+                        3 => If you would like to go back to the main menu and input a password of your own
+                                                '''))
+                    if password_generation_response == 1:
+                        new_credentials.save_credentials()
+                        print(f"You have successfully added your new site credentials ")
+                        satisfactory_password = True
+                    
+                    elif password_generation_response == 2:
+                        continue
+                    
+                    elif password_generation_response == 3:
+                        satisfactory_password = True
+                    else:
+                        print("invalide response please sselect an option once more")  
             
             elif second_response == 3:
+                Credentials.find_credentials()        
+            
+            elif second_response == 4:
                 credential_list = Credentials.display_credentials()
                 
                 for credential in credential_list:
                     print(f"{credential.site_name} Account Password = {credential.site_password}")     
             
-            elif second_response == 4:
+            elif second_response == 5:
                 site_deleting = input("Enter the site name of the site you want to delete")
                 site_to_be_deleted = site_deleting.find_credentials
                 site_to_be_deleted.delete_account()
                 print("Site success fully deleted")
                         
-            elif second_response == 5:
+            elif second_response == 6:
                 print("Thank you and see you later!")
                 login_status = False    
             
-                
+            else:
+                print ("Invalide Response! Please try once more")
 
 
 
 
     
-  if __name__ == "__main__":
+if __name__ == "__main__":
     account_management()     
         
 
