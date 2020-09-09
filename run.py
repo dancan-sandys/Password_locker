@@ -2,6 +2,7 @@
 
 from user import User
 from credentials import Credentials
+import pyperclip
 
 login_status = False
 ''' 
@@ -106,6 +107,8 @@ def account_management():
             '''
             loging_in()
 
+        else:
+            print('invalid response')
     
     if login_status == True:
     
@@ -151,8 +154,14 @@ def account_management():
                         print("invalide response please sselect an option once more")  
             
             elif second_response == 3:
-                Credentials.find_credentials()        
-            
+                
+                found_credentials = Credentials.find_credentials()
+                
+                if found_credentials != None:
+                
+                    pyperclip.copy(found_credentials)    
+                else:
+                    print('The site you entered does not exist in our database')
             elif second_response == 4:
                 credential_list = Credentials.display_credentials()
                 
