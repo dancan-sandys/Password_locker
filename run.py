@@ -122,11 +122,13 @@ def account_management():
                                         6 => to log out of your account.
                                                       '''))
             
+            satisfactory_password = False
             
             if second_response == 1:
                 new_credentials = Credentials.add_credentials()
                 new_credentials.save_credentials()
                 print(f"You have successfully added your new site credentials ")   
+            
             
             elif second_response == 2:
                 '''
